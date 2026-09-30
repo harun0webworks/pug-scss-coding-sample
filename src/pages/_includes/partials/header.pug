@@ -1,0 +1,11 @@
+header#header.header
+	.header__inner
+		.header__logo
+			a(href='/') ポートフォリオ
+		button.header__menu-btn.js-header__menu-btn(type="button" aria-label="メニュー" aria-controls="gnav" aria-expanded="false")
+		nav#gnav.header__gnav.js-header__gnav
+			.header__gnav-inner
+				ul.header__gnav-list
+					each item in nav
+						li.header__gnav-list-item(class= item.class ? 'header__gnav-list-item' + item.class : '')
+							a(href=item.url)= item.label

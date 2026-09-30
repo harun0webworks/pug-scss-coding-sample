@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+// base font-size
+$font-size-base: 16px;
+
+// breakpoint
+$mq-breakpoints: (
+	'xs': 320px,
+	'md': 769px,
+	'lg' : 1151px,
+	'xl': 1280px,
+);
+
+// color vars
+
+$color-theme: (
+	'main': #E48484,
+	'accent': #5AB3DA,
+	'sub': #E3DEDE,
+	'bg': #FFFFFF,
+);
+$color-text: (
+	'main': #222222,
+	'sub': #555555,
+	'link': #3817EF,
+	'link_visited': #6E4799,
+);
+
+$content-width: (
+	'pc': 1120px,
+	'sp': 428px,
+);
+
+$design-width: (
+	'pc': 1440px,
+	'sp': 428px,
+);
+
+$content-padding: 16px;
+$header-height-sp: 158px;

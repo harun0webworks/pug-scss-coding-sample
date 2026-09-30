@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@use "../vars/variables" as *;
+@use "sass:map";
+
+@mixin mq($breakpoint: md, $rule: min, $subtraction: false) {
+	$breakpoint: map.get($mq-breakpoints, $breakpoint);
+	@if $rule == max and $subtraction {
+		$breakpoint: $breakpoint - 1;
+	}
+	@media screen and (#{$rule}-width: $breakpoint) {
+		@content;
+	}
+}

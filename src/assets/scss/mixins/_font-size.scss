@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@use "sass:math";
+@use "../vars/variables" as *;
+
+@mixin fs($font-size, $line-height:0, $letter-spacing:0, $is_center:false){
+	font-size: math.div($font-size, $font-size-base) * 1rem;
+	@if($line-height!=0){
+		line-height: math.div($line-height, $font-size);
+	}
+	@if($letter-spacing!=0){
+		letter-spacing: math.div($letter-spacing, $font-size) * 1em;
+		@if($is_center==true){
+			text-indent: math.div($letter-spacing, $font-size) * 1em;
+		}
+	}
+}

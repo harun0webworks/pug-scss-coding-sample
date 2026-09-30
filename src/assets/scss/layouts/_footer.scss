@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+@use "../mixins/index" as *;
+@use "../vars/variables" as *;
+@use "sass:map";
+
+.footer {
+	background-color: map.get($color-theme, 'main');
+	padding-block: rem(6) rem(12);
+	@include mq() {
+		padding-block: rem(6);
+	}
+ 	&__inner {
+		position: relative;
+		max-width: map.get($content-width, 'pc') + $content-padding * 2;
+		margin-inline: auto;
+		padding-inline: rem($content-padding);
+		text-align: center;
+	}
+	&__nav-list {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
+		padding-block: rem(2) rem(18);
+		@include mq() {
+			justify-content: center;
+			gap: rem(40);
+			padding-block: rem(10) rem(16);
+		}
+		&-item {
+			a {
+				border-bottom: 2px solid transparent;
+				padding-bottom: 4px;
+				transition: border-color .3s;
+				color: #fff;
+				@include fs(16px, 24px);
+				text-decoration: none;
+				@media (any-hover: hover) {
+					&:hover {
+						border-color: #fff;
+					}
+				}
+			}
+		}
+	}
+	&__copy {
+		margin-right: rem(46);
+		@include fs(12px, 12px * 1.5);
+		color: #fff;
+		@include mq() {
+			margin-right: 0;
+		}
+	}
+	&__pagetop {
+		position: absolute;
+		top: 10px;
+		right: 8px;
+		width: 56px;
+		height: 56px;
+		@include mq() {
+			top: 50%;
+			right: $content-padding;
+			width: 64px;
+			height: 64px;
+			transform: translateY(-50%);
+		}
+		a {
+			position: relative;
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: 1px solid map.get($color-theme, 'bg');
+			border-radius: 64px;
+			background-color: map.get($color-theme, 'bg');
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) scale(1, -1);
+				display: block;
+				width: 20px;
+				height: 10px;
+				background-color: map.get($color-theme, 'main');
+				mask-image: url("../images/common_icon_arrow.svg");
+				mask-position: center;
+				mask-size: contain;
+				mask-repeat: no-repeat;
+			}
+		}
+	}
+}

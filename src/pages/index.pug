@@ -1,0 +1,181 @@
+---
+pageTitle: "ポートフォリオ"
+pageDescription: "ポートフォリオの説明です。"
+is_home: true
+---
+
+extends _includes/layouts/default
+
+block content
+	- var relativeAssets = './assets/images/'
+	.top-mv
+		.top-mv__inner
+			.splide
+				.splide__arrows
+					button.splide__arrow.splide__arrow--prev
+						img(src=relativeAssets + "top-mv_icon_arrow.svg" loading="eager" alt="前のスライドへ")
+					button.splide__arrow.splide__arrow--next
+						img(src=relativeAssets + "top-mv_icon_arrow.svg" loading="eager" alt="次のスライドへ")
+				.splide__track
+					.splide__list
+						.splide__slide
+							picture
+								source(srcset=relativeAssets + "top-mv_bg_01.webp" type="image/webp" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_01.jpg" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_01-sp.webp" type="image/webp")
+								img(src=relativeAssets + "top-mv_bg_01-sp.jpg" loading="eager")
+						.splide__slide
+							picture
+								source(srcset=relativeAssets + "top-mv_bg_02.webp" type="image/webp" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_02.jpg" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_02-sp.webp" type="image/webp")
+								img(src=relativeAssets + "top-mv_bg_02-sp.jpg")
+						.splide__slide
+							picture
+								source(srcset=relativeAssets + "top-mv_bg_03.webp" type="image/webp" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_03.jpg" media="(min-width: 769px)")
+								source(srcset=relativeAssets + "top-mv_bg_03-sp.webp" type="image/webp")
+								img(src=relativeAssets + "top-mv_bg_03-sp.jpg")
+				.top-mv__text
+					.top-mv__text-inner
+						p.top-mv__text-message Welcome to My Portfolio
+						h1.top-mv__text-name 自分の名前
+						p.top-mv__text-catch キャッチコピーが入ります。
+	.top__content
+		section#works.top-works
+			h2.top-works__heading 制作実績
+			-
+				var worksTabs = [
+					{ 'id': 'static', 'label': '静的サイト', 'works': [
+						{ 'title': 'タイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': 'タイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': 'タイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': 'タイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+					]},
+					{ 'id': 'dynamic', 'label': '動的サイト', 'works': [
+						{ 'title': '動的サイトタイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': '動的サイトタイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': '動的サイトタイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+						{ 'title': '動的サイトタイトル', 'keywords': ['キーワード', 'キーワード', 'キーワード'] },
+					]},
+				]
+			.top-works__tabs.js-tabs
+				.top-works__tabs-list(role="tablist" aria-label="制作実績の種類")
+					each tab, i in worksTabs
+						button.top-works__tabs-button(type="button" role="tab" id='works-tab-' + tab.id aria-controls='works-panel-' + tab.id aria-selected=i === 0 ? 'true' : 'false' tabindex=i === 0 ? '0' : '-1')= tab.label
+				each tab, i in worksTabs
+					.top-works__tabs-panel(role="tabpanel" id='works-panel-' + tab.id aria-labelledby='works-tab-' + tab.id hidden=i !== 0)
+						ul.top-works__list
+							each work in tab.works
+								li.top-works__list-item
+									- var workImg = work.img ? work.img : 'top-works_img_default'
+									.top-works__list-item-img
+										picture
+											source(srcset=relativeAssets + workImg + ".webp" type="image/webp")
+											img(src=relativeAssets + workImg + ".jpg")
+									p.top-works__list-item-title= work.title
+									p.top-works__list-item-keywords= work.keywords.join('、')
+		section#skills.top-skills
+			h2.top-skills__heading スキル
+			-
+				var skills = [
+					{'name': 'HTML5', 'desc': 'セマンティックコード、構造化マークアップ、デザイナーの意図を汲み取ってマークアップする、内部SEO対策、アクセシビリティ、ことが可能です。', 'img': '01'},
+					{'name': 'CSS3', 'desc': 'デザインを忠実に、BEMを使った設計思想でスタイルアップ', 'img': '02'},
+					{'name': 'jQuery', 'desc': 'CSSアニメーションとjQueryを組み合わせることで、ブラウザの読み込み負荷が最小限のUI/UXを実装することが出来ます。', 'img': '03'},
+					{'name': 'WordPress', 'desc': '既存テーマの編集だけでなく、自作テーマでウェブサイトを構築することが出来ます。また、カスタムタクソノミーやカスタムフィールドを応用して、クライアントが更新しやすいウェブサイトを構築することが可能です。', 'img': '04'},
+					{'name': 'XD', 'desc': 'デザインカンプからマークアップするのはもちろん、ワイヤーフレームやプロトタイプを作成できます。画像の書き出し、', 'img': '05'},
+					{'name': 'Figma', 'desc': 'デザインカンプからマークアップするのはもちろん、ワイヤーフレームやプロトタイプを作成できます。', 'img': '06'},
+					{'name': 'Sourcetree', 'desc': 'バージョン管理システムを使って、複数人でのウェブサイト構築を行うことが可能です。', 'img': '07'},
+					{'name': 'Photoshop', 'desc': '写真の編集やデザインの作成、イラストの作成などができます。', 'img': '08'},
+				]
+			ul.top-skills__list
+				each skill in skills
+					li.top-skills__list-item
+						.top-skills__list-item-img
+							img(src=relativeAssets + "top-skills_img_" + skill.img + ".svg")
+						.top-skills__list-item-text
+							p.top-skills__list-item-name= skill.name
+							p.top-skills__list-item-desc= skill.desc
+		section#about.top-about
+			h2.top-about__heading 自己紹介
+			.top-about__prof
+				.top-about__prof-img-wrapper
+					.top-about__prof-img
+						picture
+							source(srcset=relativeAssets + "top-about_img.webp" type="image/webp")
+							img(src=relativeAssets + "top-about_img.png" alt="自分の名前")
+					.top-about__prof-sns
+						ul.top-about__prof-sns-list
+							li.top-about__prof-sns-list-item
+								a(href="" target="_blank" rel="noopener noreferrer")
+									img(src=relativeAssets + "top-about_icon_fb.png" alt="Facebook")
+							li.top-about__prof-sns-list-item
+								a(href="" target="_blank" rel="noopener noreferrer")
+									img(src=relativeAssets + "top-about_icon_instagram.svg" alt="Instagram")
+				.top-about__prof-text
+					p
+						| ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+						br
+						br
+						|ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+						br
+						br
+						|ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+		section#faq.top-faq
+			h2.top-faq__heading よくある質問
+			-
+				var faqList = [
+					{ 'id': '1', 'q': '連絡する際の対応可能ツールはありますか？', 'a': '回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。'},
+					{ 'id': '2', 'q': '対応可能な時間帯はいつですか？', 'a': '回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。'},
+				]
+			ul.top-faq__list
+				each faq in faqList
+					li.top-faq__list-item
+						details.top-faq__list-item-faq.js-accordion
+							summary= faq.q
+							.top-faq__list-item-answer.js-accordion-content
+								p= faq.a
+		section#contact.top-contact
+			h2.top-contact__heading お問い合わせ
+			-
+				var contactFields = [
+					{ 'type': 'radio', 'name': 'type', 'label': 'お問い合わせ種別', 'required': true, 'options': ['お仕事のご依頼・ご相談', 'お見積りのご依頼', 'その他'] },
+					{ 'type': 'text', 'name': 'name', 'label': 'お名前', 'required': true, 'placeholder': '', 'autocomplete': 'name' },
+					{ 'type': 'text', 'name': 'company', 'label': '貴社名', 'required': true, 'placeholder': '' },
+					{ 'type': 'email', 'name': 'email', 'label': 'メールアドレス', 'required': true, 'placeholder': '', 'autocomplete': 'email' },
+					{ 'type': 'select', 'name': 'find', 'label': '本サイトを知ったきっかけ', 'options': ['選択肢1', '選択肢2', '選択肢3'] },
+					{ 'type': 'text', 'name': 'title', 'label': 'お問い合わせ件名'},
+					{ 'type': 'textarea', 'name': 'body', 'label': 'お問い合わせ本文', 'placeholder': '' },
+				]
+			form.top-contact__form(action="" method="post")
+				each field in contactFields
+					- var id = 'contact-' + field.name
+					- var className = 'top-contact__form-item--' + field.name
+					if field.type === 'radio' || field.type === 'checkbox'
+						fieldset.top-contact__form-item(class=className)
+							legend.top-contact__form-label
+								if field.required
+									span.top-contact__form-required 必須
+								| #{field.label}
+							.top-contact__form-choices
+								each option in field.options
+									label.top-contact__form-choice
+										input(type=field.type name=field.name value=option required=field.type === 'radio' && field.required)
+										span= option
+					else
+						.top-contact__form-item(class=className)
+							label.top-contact__form-label(for=id)
+								if field.required
+									span.top-contact__form-required 必須
+								| #{field.label}
+							if field.type === 'textarea'
+								textarea.top-contact__form-input(id=id name=field.name rows="16" required=field.required placeholder=field.placeholder)
+							else if field.type === 'select'
+								select.top-contact__form-input(id=id name=field.name required=field.required)
+									option(value="") ---
+									each option in field.options
+										option(value=option)= option
+							else
+								input.top-contact__form-input(type=field.type id=id name=field.name required=field.required placeholder=field.placeholder autocomplete=field.autocomplete)
+				.top-contact__form-submit
+					button.top-contact__form-button(type="submit") 送信

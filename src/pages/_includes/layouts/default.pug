@@ -1,0 +1,50 @@
+doctype html
+html(lang='ja')
+	head
+		//- Meta Tags
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		//- 画面幅が427px以下の端末では、SPデザイン幅428pxのまま全体を縮小して表示する
+		//- 最初の描画より前に切り替える必要があるので、jQuery読み込み前にここで実行する
+		script.
+			(function() {
+				var viewport = document.querySelector('meta[name="viewport"]');
+				var updateViewport = function() {
+					// iOSは横向きでもscreen.widthが縦向きの幅のままなので、向きから今の幅を求める
+					var isPortrait = window.matchMedia('(orientation: portrait)').matches;
+					var deviceWidth = isPortrait
+						? Math.min(window.screen.width, window.screen.height)
+						: Math.max(window.screen.width, window.screen.height);
+					var content = deviceWidth < 428 ? 'width=428' : 'width=device-width, initial-scale=1';
+					if (viewport.getAttribute('content') !== content) {
+						viewport.setAttribute('content', content);
+					}
+				};
+				updateViewport();
+				window.addEventListener('orientationchange', updateViewport);
+			})();
+		if pageTitle === ''
+			title=site.metaTitle
+		else
+			title=pageTitle
+
+		if(pageDescription !== undefined && pageDescription !== '')
+			meta(name='description', content=pageDescription)
+		else
+			meta(name='description', content=site.metaDescription)
+		meta(name="robots" content="noindex, nofollow")
+
+		link(rel='canonical', href=site.url + page.fileSlug)
+		link(rel="shortcut icon", href="/favicon.ico")
+		link(rel="preconnect" href="https://fonts.googleapis.com")
+		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+		link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet")
+		link(rel='stylesheet', href=assets["main.css"])
+
+	body
+		.container
+			include ../partials/header
+			include ../partials/main
+				block content
+			include ../partials/footer
+		script(src=assets["main.js"])

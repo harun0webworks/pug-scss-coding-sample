@@ -1,0 +1,34 @@
+[
+	{
+		"label": "ホーム",
+		"url": "/",
+		"class": "--home"
+	},
+	{
+		"label": "制作実績",
+		"url": "/#works",
+		"class": "--works"
+	},
+	{
+		"label": "スキル",
+		"url": "/#skills",
+		"class": "--skills"
+	},
+	{
+		"label": "自己紹介",
+		"url": "/#about",
+		"class": "--about"
+	},
+
+	{
+		"label": "よくある質問",
+		"url": "/#faq",
+		"class": "--faq"
+	},
+	{
+		"label": "お問い合わせ",
+		"url": "/#contact",
+		"class": "--contact",
+		"hideInFooter": true
+	}
+]

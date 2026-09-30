@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+@use "reset.css";
+@use "mixins/index" as *;
+@use "base";
+@use "@splidejs/splide/dist/css/splide.min";
+@use "layouts/index" as layouts;
+@use "pages/index" as pages;

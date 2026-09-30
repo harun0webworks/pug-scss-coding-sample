@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+@use "sass:math";
+@use "../vars/variables" as *;
+
+// px値または数値をremに変換する
+// 例: rem(24px) => 1.5rem / rem(24) => 1.5rem
+@function rem($value) {
+	@if math.is-unitless($value) {
+		$value: $value * 1px;
+	} @else if math.unit($value) != "px" {
+		@error "rem() にはpx値または数値を渡してください: #{$value}";
+	}
+	@return math.div($value, $font-size-base) * 1rem;
+}
+
+@function cqw($value, $parent-width) {
+	@if math.is-unitless($value) {
+		$value: $value * 1px;
+	} @else if math.unit($value) != "px" {
+		@error "cqw() にはpx値または数値を渡してください: #{$value}";
+	}
+	@return math.div($value * 100cqw, $parent-width);
+}

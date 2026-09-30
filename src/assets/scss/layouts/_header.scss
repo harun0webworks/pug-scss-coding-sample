@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+@use "../mixins/index" as *;
+@use "../vars/variables" as *;
+@use "sass:map";
+@use "sass:math";
+
+// メニューを開いている間はページのスクロールを止める
+html.is-menu-open {
+	overflow: hidden;
+}
+
+.header {
+	&__inner {
+		position: relative;
+		display: grid;
+		grid-template-columns: 256px 1fr;
+		align-items: center;
+		max-width: map.get($content-width, 'pc') + $content-padding * 2;
+		margin-inline: auto;
+		padding: rem(36) rem(16);
+		@include mq() {
+			grid-template-columns: auto 1fr;
+			padding: 0 rem($content-padding);
+		}
+		@include mq('lg') {
+			grid-template-columns: 224px 1fr;
+		}
+	}
+	&__logo {
+		margin-block: rem(16);
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-decoration: none;
+			transition: opacity .3s;
+			color: map.get($color-text, 'main');
+			@include fs(36px, 36px * 1.5);
+			font-weight: bold;
+			@include mq() {
+				@include fs(20px);
+			}
+			@include mq('lg') {
+				@include fs(32px);
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					opacity: .6;
+				}
+			}
+		}
+	}
+	&__gnav {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		z-index: 101;
+		display: none;
+		@include mq() {
+			position: static;
+			top: auto;
+			left: auto;
+			display: block;
+			width: auto;
+			height: 100%;
+		}
+		&-inner {
+			display: grid;
+			place-items: center;
+			height: calc(100dvh - $header-height-sp);
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			background-color: map.get($color-theme, 'sub');
+			@include mq() {
+				display: block;
+				place-items: initial;
+				height: 100%;
+				overflow-y: visible;
+				background-color: map.get($color-theme, 'bg');
+			}
+		}
+		&-list {
+			display: inline-grid;
+			gap: rem(40);
+			@include mq() {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				gap: rem(32);
+				height: 100%;
+			}
+			@include mq('lg') {
+				gap: rem(40);
+			}
+			&-item {
+				a {
+					display: inline-block;
+					text-decoration: none;
+					color: map.get($color-text, 'main');
+					@include fs(24px, 24px * 1.5);
+					transition: border-color .3s;
+					font-weight: bold;
+					@include mq() {
+						border-bottom: 2px solid transparent;
+						padding-block: rem(4);
+						@include fs(14px);
+						font-weight: normal;
+					}
+					@include mq('lg') {
+						@include fs(16px);
+					}
+					@media (any-hover: hover) {
+						&:hover {
+							border-color: map.get($color-theme, 'main');
+						}
+					}
+				}
+				&--home, &--works, &--skills, &--about, &--faq {
+					padding-inline: rem(23);
+					@include mq() {
+						padding-inline: 0;
+					}
+				}
+				&--contact {
+					margin-top: rem(40);
+					@include mq() {
+						height: 100%;
+						margin-top: 0;
+					}
+					a {
+						position: relative;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-bottom: none;
+						padding: rem(16) rem(23);
+						background-color: map.get($color-theme, 'main');
+						color: #fff;
+						font-weight: bold;
+						@include mq() {
+							height: 100%;
+							padding: rem(12);
+						}
+						&::after {
+							content: '';
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							display: block;
+							width: calc(100% - 12px);
+							height: calc(100% - 12px);
+							border: 2px solid transparent;
+							transition: border-color .3s;
+						}
+						@media (any-hover: hover) {
+							&:hover {
+								&::after {
+									border-color: #fff;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	// 背景のグラデーションが真ん中の線、::before・::afterが上下の線
+	&__menu-btn {
+		position: relative;
+		z-index: 102;
+		justify-self: end;
+		width: rem(50);
+		height: rem(50);
+		padding: 0;
+		border: none;
+		background: linear-gradient(map.get($color-theme, 'main'), map.get($color-theme, 'main')) center / 45px 3px no-repeat;
+		cursor: pointer;
+		transition: background-size .3s;
+		@include mq() {
+			display: none;
+		}
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 45px;
+			height: 3px;
+			background-color: map.get($color-theme, 'main');
+			transition: transform .3s;
+		}
+		// 線の間隔10px + 線の太さ3px
+		&::before {
+			transform: translate(-50%, -50%) translateY(rem(-13)) rotate(0);
+		}
+		&::after {
+			transform: translate(-50%, -50%) translateY(rem(13)) rotate(0);
+		}
+		// 開いている時は真ん中の線を消してバツにする
+		&.is-open {
+			background-size: 0 3px;
+			&::before {
+				transform: translate(-50%, -50%) translateY(0) rotate(45deg);
+			}
+			&::after {
+				transform: translate(-50%, -50%) translateY(0) rotate(-45deg);
+			}
+		}
+	}
+}

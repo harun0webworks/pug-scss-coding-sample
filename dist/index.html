@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        var viewport = document.querySelector('meta[name="viewport"]');
+        var updateViewport = function () {
+          // iOSは横向きでもscreen.widthが縦向きの幅のままなので、向きから今の幅を求める
+          var isPortrait = window.matchMedia("(orientation: portrait)").matches;
+          var deviceWidth = isPortrait
+            ? Math.min(window.screen.width, window.screen.height)
+            : Math.max(window.screen.width, window.screen.height);
+          var content = deviceWidth < 428 ? "width=428" : "width=device-width, initial-scale=1";
+          if (viewport.getAttribute("content") !== content) {
+            viewport.setAttribute("content", content);
+          }
+        };
+        updateViewport();
+        window.addEventListener("orientationchange", updateViewport);
+      })();
+    </script>
+    <title>ポートフォリオ</title>
+    <meta name="description" content="ポートフォリオの説明です。" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/main.bundle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header" id="header">
+        <div class="header__inner">
+          <div class="header__logo"><a href="/">ポートフォリオ</a></div>
+          <button
+            class="header__menu-btn js-header__menu-btn"
+            type="button"
+            aria-label="メニュー"
+            aria-controls="gnav"
+            aria-expanded="false"
+          ></button>
+          <nav class="header__gnav js-header__gnav" id="gnav">
+            <div class="header__gnav-inner">
+              <ul class="header__gnav-list">
+                <li class="header__gnav-list-item header__gnav-list-item--home"><a href="/">ホーム</a></li>
+                <li class="header__gnav-list-item header__gnav-list-item--works"><a href="/#works">制作実績</a></li>
+                <li class="header__gnav-list-item header__gnav-list-item--skills"><a href="/#skills">スキル</a></li>
+                <li class="header__gnav-list-item header__gnav-list-item--about"><a href="/#about">自己紹介</a></li>
+                <li class="header__gnav-list-item header__gnav-list-item--faq"><a href="/#faq">よくある質問</a></li>
+                <li class="header__gnav-list-item header__gnav-list-item--contact">
+                  <a href="/#contact">お問い合わせ</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main id="main">
+        <div class="top-mv">
+          <div class="top-mv__inner">
+            <div class="splide">
+              <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev">
+                  <img
+                    src="./assets/images/top-mv_icon_arrow.svg"
+                    loading="eager"
+                    alt="前のスライドへ"
+                    width="24"
+                    height="45"
+                  />
+                </button>
+                <button class="splide__arrow splide__arrow--next">
+                  <img
+                    src="./assets/images/top-mv_icon_arrow.svg"
+                    loading="eager"
+                    alt="次のスライドへ"
+                    width="24"
+                    height="45"
+                  />
+                </button>
+              </div>
+              <div class="splide__track">
+                <div class="splide__list">
+                  <div class="splide__slide">
+                    <picture>
+                      <source
+                        srcset="./assets/images/top-mv_bg_01.webp"
+                        type="image/webp"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_01.jpg"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_01-sp.webp"
+                        type="image/webp"
+                        width="856"
+                        height="570"
+                      />
+                      <img src="./assets/images/top-mv_bg_01-sp.jpg" loading="eager" width="856" height="570" alt="" />
+                    </picture>
+                  </div>
+                  <div class="splide__slide">
+                    <picture>
+                      <source
+                        srcset="./assets/images/top-mv_bg_02.webp"
+                        type="image/webp"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_02.jpg"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_02-sp.webp"
+                        type="image/webp"
+                        width="856"
+                        height="570"
+                      />
+                      <img src="./assets/images/top-mv_bg_02-sp.jpg" width="856" height="570" alt="" loading="lazy" />
+                    </picture>
+                  </div>
+                  <div class="splide__slide">
+                    <picture>
+                      <source
+                        srcset="./assets/images/top-mv_bg_03.webp"
+                        type="image/webp"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_03.jpg"
+                        media="(min-width: 769px)"
+                        width="2880"
+                        height="1620"
+                      />
+                      <source
+                        srcset="./assets/images/top-mv_bg_03-sp.webp"
+                        type="image/webp"
+                        width="856"
+                        height="570"
+                      />
+                      <img src="./assets/images/top-mv_bg_03-sp.jpg" width="856" height="570" alt="" loading="lazy" />
+                    </picture>
+                  </div>
+                </div>
+              </div>
+              <div class="top-mv__text">
+                <div class="top-mv__text-inner">
+                  <p class="top-mv__text-message">Welcome to My Portfolio</p>
+                  <h1 class="top-mv__text-name">自分の名前</h1>
+                  <p class="top-mv__text-catch">キャッチコピーが入ります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="top__content">
+          <section class="top-works" id="works">
+            <h2 class="top-works__heading">制作実績</h2>
+            <div class="top-works__tabs js-tabs">
+              <div class="top-works__tabs-list" role="tablist" aria-label="制作実績の種類">
+                <button
+                  class="top-works__tabs-button"
+                  type="button"
+                  role="tab"
+                  id="works-tab-static"
+                  aria-controls="works-panel-static"
+                  aria-selected="true"
+                  tabindex="0"
+                >
+                  静的サイト
+                </button>
+                <button
+                  class="top-works__tabs-button"
+                  type="button"
+                  role="tab"
+                  id="works-tab-dynamic"
+                  aria-controls="works-panel-dynamic"
+                  aria-selected="false"
+                  tabindex="-1"
+                >
+                  動的サイト
+                </button>
+              </div>
+              <div
+                class="top-works__tabs-panel"
+                role="tabpanel"
+                id="works-panel-static"
+                aria-labelledby="works-tab-static"
+              >
+                <ul class="top-works__list">
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">タイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">タイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">タイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">タイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="top-works__tabs-panel"
+                role="tabpanel"
+                id="works-panel-dynamic"
+                aria-labelledby="works-tab-dynamic"
+                hidden
+              >
+                <ul class="top-works__list">
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">動的サイトタイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">動的サイトタイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">動的サイトタイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                  <li class="top-works__list-item">
+                    <div class="top-works__list-item-img">
+                      <picture>
+                        <source
+                          srcset="./assets/images/top-works_img_default.webp"
+                          type="image/webp"
+                          width="512"
+                          height="288"
+                        />
+                        <img
+                          src="./assets/images/top-works_img_default.jpg"
+                          width="512"
+                          height="288"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </picture>
+                    </div>
+                    <p class="top-works__list-item-title">動的サイトタイトル</p>
+                    <p class="top-works__list-item-keywords">キーワード、キーワード、キーワード</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="top-skills" id="skills">
+            <h2 class="top-skills__heading">スキル</h2>
+            <ul class="top-skills__list">
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_01.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">HTML5</p>
+                  <p class="top-skills__list-item-desc">
+                    セマンティックコード、構造化マークアップ、デザイナーの意図を汲み取ってマークアップする、内部SEO対策、アクセシビリティ、ことが可能です。
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_02.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">CSS3</p>
+                  <p class="top-skills__list-item-desc">デザインを忠実に、BEMを使った設計思想でスタイルアップ</p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_03.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">jQuery</p>
+                  <p class="top-skills__list-item-desc">
+                    CSSアニメーションとjQueryを組み合わせることで、ブラウザの読み込み負荷が最小限のUI/UXを実装することが出来ます。
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_04.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">WordPress</p>
+                  <p class="top-skills__list-item-desc">
+                    既存テーマの編集だけでなく、自作テーマでウェブサイトを構築することが出来ます。また、カスタムタクソノミーやカスタムフィールドを応用して、クライアントが更新しやすいウェブサイトを構築することが可能です。
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_05.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">XD</p>
+                  <p class="top-skills__list-item-desc">
+                    デザインカンプからマークアップするのはもちろん、ワイヤーフレームやプロトタイプを作成できます。画像の書き出し、
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_06.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">Figma</p>
+                  <p class="top-skills__list-item-desc">
+                    デザインカンプからマークアップするのはもちろん、ワイヤーフレームやプロトタイプを作成できます。
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_07.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">Sourcetree</p>
+                  <p class="top-skills__list-item-desc">
+                    バージョン管理システムを使って、複数人でのウェブサイト構築を行うことが可能です。
+                  </p>
+                </div>
+              </li>
+              <li class="top-skills__list-item">
+                <div class="top-skills__list-item-img">
+                  <img src="./assets/images/top-skills_img_08.svg" width="160" height="160" alt="" loading="lazy" />
+                </div>
+                <div class="top-skills__list-item-text">
+                  <p class="top-skills__list-item-name">Photoshop</p>
+                  <p class="top-skills__list-item-desc">写真の編集やデザインの作成、イラストの作成などができます。</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="top-about" id="about">
+            <h2 class="top-about__heading">自己紹介</h2>
+            <div class="top-about__prof">
+              <div class="top-about__prof-img-wrapper">
+                <div class="top-about__prof-img">
+                  <picture>
+                    <source srcset="./assets/images/top-about_img.webp" type="image/webp" width="512" height="512" />
+                    <img
+                      src="./assets/images/top-about_img.png"
+                      alt="自分の名前"
+                      width="512"
+                      height="512"
+                      loading="lazy"
+                    />
+                  </picture>
+                </div>
+                <div class="top-about__prof-sns">
+                  <ul class="top-about__prof-sns-list">
+                    <li class="top-about__prof-sns-list-item">
+                      <a href="" target="_blank" rel="noopener noreferrer">
+                        <img
+                          src="./assets/images/top-about_icon_fb.png"
+                          alt="Facebook"
+                          width="64"
+                          height="64"
+                          loading="lazy"
+                        />
+                      </a>
+                    </li>
+                    <li class="top-about__prof-sns-list-item">
+                      <a href="" target="_blank" rel="noopener noreferrer">
+                        <img
+                          src="./assets/images/top-about_icon_instagram.svg"
+                          alt="Instagram"
+                          width="32"
+                          height="32"
+                          loading="lazy"
+                        />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="top-about__prof-text">
+                <p>
+                  ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                  <br />
+                  <br />
+                  ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                  <br />
+                  <br />
+                  ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="top-faq" id="faq">
+            <h2 class="top-faq__heading">よくある質問</h2>
+            <ul class="top-faq__list">
+              <li class="top-faq__list-item">
+                <details class="top-faq__list-item-faq js-accordion">
+                  <summary>連絡する際の対応可能ツールはありますか？</summary>
+                  <div class="top-faq__list-item-answer js-accordion-content">
+                    <p>
+                      回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。
+                    </p>
+                  </div>
+                </details>
+              </li>
+              <li class="top-faq__list-item">
+                <details class="top-faq__list-item-faq js-accordion">
+                  <summary>対応可能な時間帯はいつですか？</summary>
+                  <div class="top-faq__list-item-answer js-accordion-content">
+                    <p>
+                      回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。回答文が入ります。
+                    </p>
+                  </div>
+                </details>
+              </li>
+            </ul>
+          </section>
+          <section class="top-contact" id="contact">
+            <h2 class="top-contact__heading">お問い合わせ</h2>
+            <form class="top-contact__form" action="" method="post">
+              <fieldset class="top-contact__form-item top-contact__form-item--type">
+                <legend class="top-contact__form-label">
+                  <span class="top-contact__form-required">必須</span>
+                  お問い合わせ種別
+                </legend>
+                <div class="top-contact__form-choices">
+                  <label class="top-contact__form-choice">
+                    <input type="radio" name="type" value="お仕事のご依頼・ご相談" required />
+                    <span>お仕事のご依頼・ご相談</span>
+                  </label>
+                  <label class="top-contact__form-choice">
+                    <input type="radio" name="type" value="お見積りのご依頼" required />
+                    <span>お見積りのご依頼</span>
+                  </label>
+                  <label class="top-contact__form-choice">
+                    <input type="radio" name="type" value="その他" required />
+                    <span>その他</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="top-contact__form-item top-contact__form-item--name">
+                <label class="top-contact__form-label" for="contact-name">
+                  <span class="top-contact__form-required">必須</span>
+                  お名前
+                </label>
+                <input
+                  class="top-contact__form-input"
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  required
+                  placeholder=""
+                  autocomplete="name"
+                />
+              </div>
+              <div class="top-contact__form-item top-contact__form-item--company">
+                <label class="top-contact__form-label" for="contact-company">
+                  <span class="top-contact__form-required">必須</span>
+                  貴社名
+                </label>
+                <input
+                  class="top-contact__form-input"
+                  type="text"
+                  id="contact-company"
+                  name="company"
+                  required
+                  placeholder=""
+                />
+              </div>
+              <div class="top-contact__form-item top-contact__form-item--email">
+                <label class="top-contact__form-label" for="contact-email">
+                  <span class="top-contact__form-required">必須</span>
+                  メールアドレス
+                </label>
+                <input
+                  class="top-contact__form-input"
+                  type="email"
+                  id="contact-email"
+                  name="email"
+                  required
+                  placeholder=""
+                  autocomplete="email"
+                />
+              </div>
+              <div class="top-contact__form-item top-contact__form-item--find">
+                <label class="top-contact__form-label" for="contact-find">本サイトを知ったきっかけ</label>
+                <select class="top-contact__form-input" id="contact-find" name="find">
+                  <option value="">---</option>
+                  <option value="選択肢1">選択肢1</option>
+                  <option value="選択肢2">選択肢2</option>
+                  <option value="選択肢3">選択肢3</option>
+                </select>
+              </div>
+              <div class="top-contact__form-item top-contact__form-item--title">
+                <label class="top-contact__form-label" for="contact-title">お問い合わせ件名</label>
+                <input class="top-contact__form-input" type="text" id="contact-title" name="title" />
+              </div>
+              <div class="top-contact__form-item top-contact__form-item--body">
+                <label class="top-contact__form-label" for="contact-body">お問い合わせ本文</label>
+                <textarea
+                  class="top-contact__form-input"
+                  id="contact-body"
+                  name="body"
+                  rows="16"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div class="top-contact__form-submit">
+                <button class="top-contact__form-button" type="submit">送信</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+      <footer class="footer" id="footer">
+        <div class="footer__inner">
+          <ul class="footer__nav-list">
+            <li class="footer__nav-list-item"><a href="/">ホーム</a></li>
+            <li class="footer__nav-list-item"><a href="/#works">制作実績</a></li>
+            <li class="footer__nav-list-item"><a href="/#skills">スキル</a></li>
+            <li class="footer__nav-list-item"><a href="/#about">自己紹介</a></li>
+            <li class="footer__nav-list-item"><a href="/#faq">よくある質問</a></li>
+          </ul>
+          <small class="footer__copy">©︎ Created By</small>
+          <div class="footer__pagetop"><a href="#header" aria-label="ページトップへ戻る"></a></div>
+        </div>
+      </footer>
+    </div>
+    <script src="/assets/js/main.bundle.js"></script>
+  </body>
+</html>

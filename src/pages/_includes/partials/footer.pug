@@ -1,0 +1,9 @@
+footer#footer.footer
+	.footer__inner
+		ul.footer__nav-list
+			each item in nav.filter(item => !item.hideInFooter)
+				li.footer__nav-list-item
+					a(href=item.url)= item.label
+		small.footer__copy ©︎ Created By
+		.footer__pagetop
+			a(href="#header" aria-label="ページトップへ戻る")

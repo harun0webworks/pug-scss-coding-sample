@@ -1,0 +1,61 @@
+{
+	"name": "11ty-pug-scss",
+	"version": "1.0.0",
+	"description": "",
+	"devDependencies": {
+		"@11ty/eleventy": "^3.1.2",
+		"@11ty/eleventy-plugin-pug": "^1.0.0",
+		"@babel/core": "^7.28.5",
+		"@babel/preset-env": "^7.28.5",
+		"autoprefixer": "^10.4.22",
+		"babel-loader": "^10.0.0",
+		"copy-webpack-plugin": "^13.0.1",
+		"css-loader": "^7.1.2",
+		"glob": "^11.0.3",
+		"image-minimizer-webpack-plugin": "^3.8.2",
+		"mini-css-extract-plugin": "^2.9.4",
+		"minimist": "^1.2.8",
+		"npm-run-all": "^4.1.5",
+		"postcss-loader": "^8.2.0",
+		"postcss-scss": "^4.0.9",
+		"prettier": "^3.6.2",
+		"pug": "^3.0.3",
+		"pug-lint": "^2.7.0",
+		"sass": "^1.94.0",
+		"sass-loader": "^16.0.6",
+		"serve": "^14.2.5",
+		"sharp": "^0.34.3",
+		"terser-webpack-plugin": "^5.3.14",
+		"webpack": "^5.102.1",
+		"webpack-assets-manifest": "^6.4.0",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.2",
+		"webpack-merge": "^6.0.1"
+	},
+	"browserslist": [
+		"> 3% in JP",
+		"not IE 11",
+		"last 2 versions"
+	],
+	"scripts": {
+		"prestart": "npm run clean",
+		"start": "NODE_ENV=development npm-run-all dev:webpack dev:server",
+		"dev:webpack": "npx webpack --config ./build/webpack/webpack.dev.config.js",
+		"dev:server": "npm-run-all --parallel dev:webpack-server dev:eleventy",
+		"dev:webpack-server": "webpack-dev-server --config ./build/webpack/webpack.dev.config.js",
+		"dev:eleventy": "npx eleventy --config ./config/eleventy.config.js --watch",
+		"build": "NODE_ENV=production npm-run-all -s clean build:*",
+		"build:webpack": "NODE_ENV=production npx webpack --config ./build/webpack/webpack.prod.config.js",
+		"build:eleventy": "NODE_ENV=production npx eleventy --config ./config/eleventy.config.js",
+		"clean": "rm -rf ./dist",
+		"update": "npx ncu -u; npm install",
+		"update-check": "npx npm-check-updates",
+		"serve": "npx serve ./dist -l 8080",
+		"check-links": "node build/scripts/check-links.js"
+	},
+	"dependencies": {
+		"@splidejs/splide": "^4.1.4",
+		"jquery": "^3.7.1",
+		"reset.css": "^2.0.2"
+	}
+}
