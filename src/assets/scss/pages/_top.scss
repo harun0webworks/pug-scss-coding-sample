@@ -330,11 +330,11 @@
 						transform: rotate(180deg);
 					}
 					summary {
+						padding-right: rem(32);
 						@include fs(16px, 16px * 1.5);
 						font-weight: bold;
 						list-style: none;
 						cursor: pointer;
-						// Safari
 						&::-webkit-details-marker {
 							display: none;
 						}
@@ -394,10 +394,13 @@
 					padding-block: rem(15);
 					padding-right: rem(48);
 					background-image: url("../images/common_icon_arrow.svg");
-					background-position: right rem(16) center;
+					background-position: right rem(20) center;
 					background-repeat: no-repeat;
-					background-size: rem(16) auto;
+					background-size: rem(18) auto;
 					cursor: pointer;
+					@include mq() {
+						background-position: right rem(16) center;
+					}
 				}
 				&:is(textarea) {
 					height: rem(250);
